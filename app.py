@@ -4,6 +4,11 @@ import string
 from nltk.corpus import stopwords
 import nltk
 from nltk.stem.porter import PorterStemmer
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+tfidf = pickle.load(open('vectorizer.pkl','rb'))
+model = pickle.load(open('model.pkl','rb'))
+
 
 ps = PorterStemmer()
 
@@ -32,11 +37,11 @@ def transform_text(text):
 
     return " ".join(y)
 
-tfidf = pickle.load(open('vectorizer.pkl','rb'))
-model = pickle.load(open('model.pkl','rb'))
+
+nltk.download('punkt')
+nltk.download('stopwords')
 
 st.title("Email/SMS Spam Classifier")
-
 input_sms = st.text_area("Enter the message")
 
 if st.button('Predict'):
@@ -52,3 +57,5 @@ if st.button('Predict'):
         st.header("Spam")
     else:
         st.header("Not Spam")
+
+   
