@@ -1,3 +1,6 @@
 streamlit
 nltk
 sklearn
+nltk.corpus
+nltk.stem.porter
+nltk.word_tokenize
